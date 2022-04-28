@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateRouteListTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('route_list', function (Blueprint $table) {
             $table->id();
-          
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('user_role');
+			$table->string('route');
+			$table->string('union_name')->nullable();
+			$table->string('thana')->nullable();
+			$table->string('dist')->nullable();
+			$table->string('division')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('route_list');
     }
 }

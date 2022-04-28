@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateDownloadMessageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('download_message', function (Blueprint $table) {
             $table->id();
-          
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('user_role');
+			$table->string('sl')->nullable();
+			$table->string('mobile_number');
+			$table->string('message_text');
+			$table->string('msg_date');
+			$table->string('download_flag')->nullable();
+			$table->string('parse_flag')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('download_message');
     }
 }
